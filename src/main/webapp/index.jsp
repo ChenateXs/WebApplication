@@ -25,6 +25,9 @@
                 <label>Password:</label>
                 <input type="password" class="password" name="password"/><br>
             </div>
+            <div class="m-1 text-danger">
+                <label>${error_message}</label>
+            </div>
             <input type="submit" value="Login">
         </div>
     </form>

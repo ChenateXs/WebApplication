@@ -30,9 +30,7 @@ public class User implements Serializable {
 	public User() {
 	}
 	
-	
-	
-	public User(String password, String username, String firstname, String lastname) {
+	public User(String username, String password, String firstname, String lastname) {
 		super();
 		this.firstname = firstname;
 		this.lastname = lastname;
@@ -40,9 +38,7 @@ public class User implements Serializable {
 		this.username = username;
 	}
 
-
-
-	public User(BigInteger id, String password, String username, String firstname, String lastname) {
+	public User(BigInteger id, String username, String password, String firstname, String lastname) {
 		super();
 		this.id = id;
 		this.firstname = firstname;
@@ -50,8 +46,6 @@ public class User implements Serializable {
 		this.password = password;
 		this.username = username;
 	}
-
-
 
 	public String getFirstname() {
 		return this.firstname;
@@ -93,14 +87,10 @@ public class User implements Serializable {
 		this.username = username;
 	}
 
-
-
 	@Override
 	public int hashCode() {
 		return Objects.hash(password, username);
 	}
-
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -113,8 +103,6 @@ public class User implements Serializable {
 		User other = (User) obj;
 		return Objects.equals(password, other.password) && Objects.equals(username, other.username);
 	}
-
-
 
 	@Override
 	public String toString() {
