@@ -4,6 +4,7 @@
 		
 		<class>it.engineering.web.WebApp.domain.User</class>
 		<class>it.engineering.web.WebApp.domain.City</class>
+		<class>it.engineering.web.WebApp.domain.Manufacturer</class>
 	
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/manufactory"/>

@@ -30,8 +30,11 @@ public class CityRepository implements ICRUDRepository<City,BigInteger> {
 
 	@Override
 	public City read(BigInteger id) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		EntityManager em = MyEntitnyManagerFactory
+				.getEntityManagerFactory()
+				.createEntityManager();
+		
+		return  em.find(City.class, id);
 	}
 
 	@Override

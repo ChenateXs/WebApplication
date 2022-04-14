@@ -5,6 +5,8 @@ import it.engineering.web.WebApp.action.HomeAction;
 import it.engineering.web.WebApp.action.city.AddCityGetAction;
 import it.engineering.web.WebApp.action.city.AddCityPostAction;
 import it.engineering.web.WebApp.action.login.LoginAction;
+import it.engineering.web.WebApp.action.manufacturer.AddManufacturerGetAction;
+import it.engineering.web.WebApp.action.manufacturer.AddManufacturerPostAction;
 import it.engineering.web.WebApp.constant.WebConstants;
 
 public class ActionFactory {
@@ -24,6 +26,12 @@ public class ActionFactory {
 				action = new AddCityGetAction();
 			else if(method.equalsIgnoreCase("POST"))
 				action = new AddCityPostAction();
+			break;
+		case WebConstants.PATH_ADD_MANUFACTURER:
+			if(method.equalsIgnoreCase("GET"))
+				action = new AddManufacturerGetAction();
+			else if(method.equalsIgnoreCase("POST"))
+				action = new AddManufacturerPostAction();
 			break;
 		default:
 			break;
