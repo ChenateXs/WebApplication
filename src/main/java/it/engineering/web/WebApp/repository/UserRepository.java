@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
-import it.engineering.web.WebApp.action.domain.User;
+import it.engineering.web.WebApp.domain.User;
 import it.engineering.web.WebApp.persistence.MyEntitnyManagerFactory;
 
 public class UserRepository {

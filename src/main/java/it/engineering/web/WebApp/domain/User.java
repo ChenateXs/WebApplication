@@ -1,4 +1,4 @@
-package it.engineering.web.WebApp.action.domain;
+package it.engineering.web.WebApp.domain;
 
 import java.io.Serializable;
 import javax.persistence.*;

@@ -3,7 +3,7 @@ package it.engineering.web.WebApp.storage;
 import java.util.ArrayList;
 import java.util.List;
 
-import it.engineering.web.WebApp.action.domain.User;
+import it.engineering.web.WebApp.domain.User;
 import it.engineering.web.WebApp.repository.UserRepository;
 
 public class UserStorage {

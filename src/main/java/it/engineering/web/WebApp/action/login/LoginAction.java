@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import it.engineering.web.WebApp.action.AbstractAction;
-import it.engineering.web.WebApp.action.domain.User;
 import it.engineering.web.WebApp.constant.WebConstants;
+import it.engineering.web.WebApp.domain.User;
 import it.engineering.web.WebApp.storage.UserStorage;
 
 public class LoginAction extends AbstractAction{
@@ -58,7 +58,7 @@ public class LoginAction extends AbstractAction{
 		
 		for(User current: users) {
 			if(current.equals(user)) {
-				loggedInUsers.add(current.clone());
+				//loggedInUsers.add(current.clone());
 				request.getServletContext().setAttribute("logged_in_users", loggedInUsers);
 				return current;
 			}
