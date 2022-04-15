@@ -9,8 +9,8 @@ import it.engineering.web.WebApp.action.AbstractAction;
 import it.engineering.web.WebApp.constant.WebConstants;
 import it.engineering.web.WebApp.domain.City;
 import it.engineering.web.WebApp.domain.Manufacturer;
-import it.engineering.web.WebApp.repository.CityRepository;
-import it.engineering.web.WebApp.repository.ManufacturerRepository;
+import it.engineering.web.WebApp.service.CityService;
+import it.engineering.web.WebApp.service.ManufacturerService;
 
 public class AddManufacturerPostAction extends AbstractAction{
 
@@ -21,18 +21,12 @@ public class AddManufacturerPostAction extends AbstractAction{
 			String manufactortrId = request.getParameter("manufactortr_id");
 			String taxId = request.getParameter("tax_id");
 			String address = request.getParameter("address");
-			City city = new CityRepository().read(new BigInteger(request.getParameter("city")));
+			City city = new CityService().read(request.getParameter("city"));
 			
-			Manufacturer manufacturer = 
-					new Manufacturer(
-							new BigInteger(manufactortrId),
-							new BigInteger(taxId),
-							address,
-							city);
+			Manufacturer manufacturer = new Manufacturer(manufactortrId,taxId,address,city);
 							
-			ManufacturerRepository manufacturerRepository = new ManufacturerRepository();
+			new ManufacturerService().create(manufacturer);
 			
-			manufacturerRepository.create(manufacturer);
 			request.setAttribute("message", "A manufacturer has been created.");
 			return WebConstants.PAGE_LOGIN;
 		} catch (Exception e) {

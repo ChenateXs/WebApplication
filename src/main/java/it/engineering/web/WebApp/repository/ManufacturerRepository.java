@@ -5,7 +5,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
-import it.engineering.web.WebApp.domain.Manufacturer;
+import it.engineering.web.WebApp.entity.Manufacturer;
 import it.engineering.web.WebApp.persistence.MyEntitnyManagerFactory;
 
 public class ManufacturerRepository implements ICRUDRepository<Manufacturer, BigInteger>{

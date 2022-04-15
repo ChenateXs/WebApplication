@@ -20,7 +20,7 @@
             <h2>Add city</h2>
             <div class="m-1">
                 <label>Zip Code:</label>
-                <input type="text" class="zip_code" name="zip_code"/><br>
+                <input type="number" class="zip_code" name="zip_code"/><br>
             </div>
             <div class="m-1">
                 <label>Name:</label>

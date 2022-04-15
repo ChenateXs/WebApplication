@@ -1,23 +1,35 @@
-package it.engineering.web.WebApp.domain;
+package it.engineering.web.WebApp.entity;
 
+import java.io.Serializable;
+import javax.persistence.*;
+import java.math.BigInteger;
 import java.util.Objects;
 
-public class User {
+
+/**
+ * The persistent class for the user database table.
+ * 
+ */
+@Entity
+@NamedQuery(name="User.findAll", query="SELECT u FROM User u")
+public class User implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-
-	private String username;
-
-	private String password;
 
 	private String firstname;
 
 	private String lastname;
 
-	public User() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	private String password;
 
+	private String username;
+
+	public User() {
+	}
+	
 	public User(String username, String password, String firstname, String lastname) {
 		super();
 		this.firstname = firstname;
@@ -35,24 +47,24 @@ public class User {
 		this.username = username;
 	}
 
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
 	public String getFirstname() {
-		return firstname;
+		return this.firstname;
 	}
 
 	public void setFirstname(String firstname) {
 		this.firstname = firstname;
 	}
 
+	public long getId() {
+		return this.id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
 	public String getLastname() {
-		return lastname;
+		return this.lastname;
 	}
 
 	public void setLastname(String lastname) {
@@ -60,7 +72,7 @@ public class User {
 	}
 
 	public String getPassword() {
-		return password;
+		return this.password;
 	}
 
 	public void setPassword(String password) {
@@ -68,7 +80,7 @@ public class User {
 	}
 
 	public String getUsername() {
-		return username;
+		return this.username;
 	}
 
 	public void setUsername(String username) {
@@ -77,7 +89,7 @@ public class User {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(username);
+		return Objects.hash(password, username);
 	}
 
 	@Override
@@ -89,7 +101,7 @@ public class User {
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
-		return Objects.equals(username, other.username);
+		return Objects.equals(password, other.password) && Objects.equals(username, other.username);
 	}
 
 	@Override
@@ -97,9 +109,4 @@ public class User {
 		return "User [id=" + id + ", firstname=" + firstname + ", lastname=" + lastname + ", password=" + password
 				+ ", username=" + username + "]";
 	}
-
-	public User clone(){
-		return new User(id,username, null,firstname,lastname);
-	}
-	
 }

@@ -1,23 +1,41 @@
-package it.engineering.web.WebApp.domain;
+package it.engineering.web.WebApp.entity;
 
+import java.io.Serializable;
+import javax.persistence.*;
+import java.math.BigInteger;
 import java.util.Objects;
 
-public class Manufacturer {
+
+/**
+ * The persistent class for the manufacturer database table.
+ * 
+ */
+@Entity
+@NamedQuery(name="Manufacturer.findAll", query="SELECT m FROM Manufacturer m")
+public class Manufacturer implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
 
+	@Column(name="manufactortr_id")
 	private String manufactortrId;
 
+	@Column(name="tax_id")
 	private String taxId;
-	
-	private String address;
 
+	private String address;
+	
+	@ManyToOne (
+			cascade = {CascadeType.MERGE,CascadeType.PERSIST}
+			)
+	@JoinColumn(name="zip_code")
 	private City city;
 
 	public Manufacturer() {
-		super();
-		// TODO Auto-generated constructor stub
 	}
-
+	
 	public Manufacturer(String manufactortrId, String taxId, String address, City city) {
 		super();
 		this.address = address;
@@ -26,7 +44,7 @@ public class Manufacturer {
 		this.city = city;
 	}
 
-	public Manufacturer(long id, String manufactortrId, String taxId, String address, City city) {
+	public Manufacturer(long id,  String manufactortrId, String taxId, String address, City city) {
 		super();
 		this.id = id;
 		this.address = address;
@@ -35,8 +53,9 @@ public class Manufacturer {
 		this.city = city;
 	}
 
+
 	public long getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(long id) {
@@ -44,7 +63,7 @@ public class Manufacturer {
 	}
 
 	public String getAddress() {
-		return address;
+		return this.address;
 	}
 
 	public void setAddress(String address) {
@@ -52,7 +71,7 @@ public class Manufacturer {
 	}
 
 	public String getManufactortrId() {
-		return manufactortrId;
+		return this.manufactortrId;
 	}
 
 	public void setManufactortrId(String manufactortrId) {
@@ -60,7 +79,7 @@ public class Manufacturer {
 	}
 
 	public String getTaxId() {
-		return taxId;
+		return this.taxId;
 	}
 
 	public void setTaxId(String taxId) {
@@ -77,7 +96,7 @@ public class Manufacturer {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(manufactortrId);
+		return Objects.hash(address, city, id, manufactortrId, taxId);
 	}
 
 	@Override
@@ -89,7 +108,8 @@ public class Manufacturer {
 		if (getClass() != obj.getClass())
 			return false;
 		Manufacturer other = (Manufacturer) obj;
-		return Objects.equals(manufactortrId, other.manufactortrId);
+		return Objects.equals(address, other.address) && Objects.equals(city, other.city) && id == other.id
+				&& Objects.equals(manufactortrId, other.manufactortrId) && Objects.equals(taxId, other.taxId);
 	}
 
 	@Override
@@ -97,6 +117,6 @@ public class Manufacturer {
 		return "Manufacturer [id=" + id + ", address=" + address + ", manufactortrId=" + manufactortrId + ", taxId="
 				+ taxId + ", city=" + city + "]";
 	}
-	
 
+	
 }

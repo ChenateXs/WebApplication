@@ -4,16 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 import it.engineering.web.WebApp.domain.User;
-import it.engineering.web.WebApp.repository.UserRepository;
+import it.engineering.web.WebApp.service.UserService;
 
 public class UserStorage {
 	private List<User> users;
 	private static UserStorage instance;
-	private UserRepository userRepository;
+	private UserService userService;
 	
 	public UserStorage() {
-		userRepository = new UserRepository();
-		users = userRepository.getAll();
+		userService = new UserService();
+		
+		users = userService.getAll();
 	}
 	
 	public static UserStorage	getInstance() {

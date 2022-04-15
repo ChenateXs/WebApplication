@@ -7,14 +7,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import it.engineering.web.WebApp.action.AbstractAction;
 import it.engineering.web.WebApp.constant.WebConstants;
-import it.engineering.web.WebApp.domain.City;
+import it.engineering.web.WebApp.entity.City;
 import it.engineering.web.WebApp.repository.CityRepository;
 
 public class AddCityPostAction extends AbstractAction {
 
 	@Override
 	public String executeRequest(HttpServletRequest request, HttpServletResponse response) {
-		City city = new City(new BigInteger(request.getParameter("zip_code")),request.getParameter("name"));
+		City city = new City(request.getParameter("zip_code"),request.getParameter("name"));
 		CityRepository cityRepository = new CityRepository();
 		try {
 			cityRepository.create(city);

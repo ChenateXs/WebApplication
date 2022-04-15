@@ -58,7 +58,7 @@ public class LoginAction extends AbstractAction{
 		
 		for(User current: users) {
 			if(current.equals(user)) {
-				//loggedInUsers.add(current.clone());
+				loggedInUsers.add(current.clone());
 				request.getServletContext().setAttribute("logged_in_users", loggedInUsers);
 				return current;
 			}

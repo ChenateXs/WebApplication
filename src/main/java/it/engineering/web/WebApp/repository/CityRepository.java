@@ -5,11 +5,10 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
-import it.engineering.web.WebApp.domain.City;
-import it.engineering.web.WebApp.domain.User;
+import it.engineering.web.WebApp.entity.City;
 import it.engineering.web.WebApp.persistence.MyEntitnyManagerFactory;
 
-public class CityRepository implements ICRUDRepository<City,BigInteger> {
+public class CityRepository implements ICRUDRepository<City,String> {
 
 	@Override
 	public void create(City entity) throws Exception {
@@ -19,7 +18,7 @@ public class CityRepository implements ICRUDRepository<City,BigInteger> {
 		
 		em.getTransaction().begin();
 		
-		if(!exist(entity,em))
+		if(read(entity.getZipCode())==null)
 			em.persist(entity);
 		else 
 			throw new Exception("City with that zip code already exists");
@@ -29,7 +28,7 @@ public class CityRepository implements ICRUDRepository<City,BigInteger> {
 	}
 
 	@Override
-	public City read(BigInteger id) throws Exception {
+	public City read(String id) throws Exception {
 		EntityManager em = MyEntitnyManagerFactory
 				.getEntityManagerFactory()
 				.createEntityManager();
@@ -38,13 +37,13 @@ public class CityRepository implements ICRUDRepository<City,BigInteger> {
 	}
 
 	@Override
-	public void update(BigInteger id, City entity) throws Exception {
+	public void update(String id, City entity) throws Exception {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void delete(BigInteger id) throws Exception  {
+	public void delete(String id) throws Exception  {
 		// TODO Auto-generated method stub
 		
 	}
@@ -58,9 +57,5 @@ public class CityRepository implements ICRUDRepository<City,BigInteger> {
 		List<City> cities = em.createNamedQuery("City.findAll",City.class).getResultList();
 		em.close();
 		return cities;
-	}
-
-	private boolean exist(City entity, EntityManager em) {
-		return em.find(City.class, entity.getZipCode())!=null;
 	}
 }

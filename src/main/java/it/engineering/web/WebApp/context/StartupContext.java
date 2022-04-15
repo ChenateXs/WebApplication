@@ -7,7 +7,7 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 
-import it.engineering.web.WebApp.domain.User;
+import it.engineering.web.WebApp.entity.User;
 
 @WebListener("Configuration")
 public class StartupContext implements ServletContextListener{
