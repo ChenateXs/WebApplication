@@ -6,6 +6,7 @@ import it.engineering.web.WebApp.action.city.AddCityGetAction;
 import it.engineering.web.WebApp.action.city.AddCityPostAction;
 import it.engineering.web.WebApp.action.city.ViewCityAction;
 import it.engineering.web.WebApp.action.login.LoginAction;
+import it.engineering.web.WebApp.action.logout.LogoutAction;
 import it.engineering.web.WebApp.action.manufacturer.AddManufacturerGetAction;
 import it.engineering.web.WebApp.action.manufacturer.AddManufacturerPostAction;
 import it.engineering.web.WebApp.action.manufacturer.ViewManufacturersAction;
@@ -22,6 +23,9 @@ public class ActionFactory {
 			break;
 		case WebConstants.PATH_LOGIN:
 			action = new LoginAction();
+			break;
+		case WebConstants.PATH_LOGOUT:
+			action = new LogoutAction();
 			break;
 		case WebConstants.PATH_ADD_CITY:
 			if(method.equalsIgnoreCase("GET"))

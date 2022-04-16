@@ -43,6 +43,7 @@ public class LoginAction extends AbstractAction{
 		}
 		
 		List<User> users = UserStorage.getInstance().getUsers(); 
+		@SuppressWarnings("unchecked")
 		List<User> loggedInUsers = (List<User>)request.getServletContext().getAttribute("logged_in_users");
 		
 		
