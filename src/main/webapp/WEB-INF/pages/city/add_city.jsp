@@ -13,10 +13,10 @@
 </head>
 <jsp:include page="/WEB-INF/pages/header.jsp"></jsp:include>
 <body style="background-image: url('https://images.hdqwalls.com/download/dark-abstract-black-minimal-4k-q0-1920x1080.jpg');">
-    <div class="position-absolute top-50 start-50 translate-middle">
+    <div class="position-absolute top-50 start-50 translate-middle border border-white rounded-3 text-white bg-dark">
     <c:url value="/application/add_city" var="urlAddCity"></c:url>
 	<form action="${urlAddCity}" method="post">
-        <div style="text-align: center;">
+        <div style="text-align: center;" class="m-3">
             <h2>Add city</h2>
             <div class="m-1">
                 <label>Zip Code:</label>

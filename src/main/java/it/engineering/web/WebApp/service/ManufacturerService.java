@@ -1,9 +1,10 @@
 package it.engineering.web.WebApp.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import it.engineering.web.WebApp.domain.City;
 import it.engineering.web.WebApp.domain.Manufacturer;
-import it.engineering.web.WebApp.entity.City;
 import it.engineering.web.WebApp.repository.ManufacturerRepository;
 
 public class ManufacturerService implements ICRUDService<Manufacturer, String>{
@@ -21,7 +22,7 @@ public class ManufacturerService implements ICRUDService<Manufacturer, String>{
 						entity.getManufactortrId(),
 						entity.getTaxId(),
 						entity.getAddress(),
-						new City(entity.getCity().getZipCode(),entity.getCity().getName()));
+						new it.engineering.web.WebApp.entity.City(entity.getCity().getZipCode(),entity.getCity().getName()));
 		manufacturerRepository.create(manufacturer);
 	}
 
@@ -45,8 +46,12 @@ public class ManufacturerService implements ICRUDService<Manufacturer, String>{
 
 	@Override
 	public List<Manufacturer> getAll() {
-		// TODO Auto-generated method stub
-		return null;
+		List<it.engineering.web.WebApp.entity.Manufacturer> manufacturerEntities= manufacturerRepository.getAll();
+		List<Manufacturer> manufacturers = new ArrayList<Manufacturer>();
+		for(it.engineering.web.WebApp.entity.Manufacturer manufactureryE:manufacturerEntities) {
+			manufacturers.add(new Manufacturer(manufactureryE.getManufactortrId(), manufactureryE.getTaxId(), manufactureryE.getAddress(), new City(manufactureryE.getCity().getZipCode(), manufactureryE.getCity().getName())));
+		}
+		return manufacturers;
 	}
 
 }

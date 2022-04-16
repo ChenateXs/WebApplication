@@ -17,8 +17,11 @@ public interface WebConstants {
 
 	public static final String PATH_VIEW_CITY="/view_cities";
 	public static final String PAGE_VIEW_CITY="/WEB-INF/pages/city/view_cities.jsp";
-	
+
 	public static final String PATH_ADD_MANUFACTURER="/add_manufacturer";
 	public static final String PAGE_ADD_MANUFACTURER="/WEB-INF/pages/manufacturer/add_manufacturer.jsp";
+	
+	public static final String PATH_VIEW_MANUFACTURER="/view_manufacturers";
+	public static final String PAGE_VIEW_MANUFACTURER="/WEB-INF/pages/manufacturer/view_manufacturers.jsp";
 	
 }

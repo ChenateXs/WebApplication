@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
+import it.engineering.web.WebApp.entity.City;
 import it.engineering.web.WebApp.entity.Manufacturer;
 import it.engineering.web.WebApp.persistence.MyEntitnyManagerFactory;
 
@@ -45,8 +46,13 @@ public class ManufacturerRepository implements ICRUDRepository<Manufacturer, Big
 
 	@Override
 	public List<Manufacturer> getAll() {
-		// TODO Auto-generated method stub
-		return null;
+		EntityManager em = MyEntitnyManagerFactory
+				.getEntityManagerFactory()
+				.createEntityManager();
+
+		List<Manufacturer> manufacturers = em.createNamedQuery("Manufacturer.findAll",Manufacturer.class).getResultList();
+		em.close();
+		return manufacturers;
 	}
 
 }

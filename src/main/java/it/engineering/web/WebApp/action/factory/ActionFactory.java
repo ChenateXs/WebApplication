@@ -8,6 +8,7 @@ import it.engineering.web.WebApp.action.city.ViewCityAction;
 import it.engineering.web.WebApp.action.login.LoginAction;
 import it.engineering.web.WebApp.action.manufacturer.AddManufacturerGetAction;
 import it.engineering.web.WebApp.action.manufacturer.AddManufacturerPostAction;
+import it.engineering.web.WebApp.action.manufacturer.ViewManufacturersAction;
 import it.engineering.web.WebApp.constant.WebConstants;
 
 public class ActionFactory {
@@ -37,6 +38,8 @@ public class ActionFactory {
 			else if(method.equalsIgnoreCase("POST"))
 				action = new AddManufacturerPostAction();
 			break;
+		case WebConstants.PATH_VIEW_MANUFACTURER:
+			action = new ViewManufacturersAction();
 		default:
 			break;
 		}
