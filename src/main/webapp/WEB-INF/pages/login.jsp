@@ -13,7 +13,6 @@
 </head>
 <jsp:include page="header.jsp"></jsp:include>
 <body style="background-image: url('https://images.hdqwalls.com/download/dark-abstract-black-minimal-4k-q0-1920x1080.jpg');">
-
 	<div class="text-white">
 		<h2>Welcome ${sessionScope.login_user.firstname} what would you like to do?</h2>
 		

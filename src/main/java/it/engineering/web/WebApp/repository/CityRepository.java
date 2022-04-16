@@ -18,7 +18,7 @@ public class CityRepository implements ICRUDRepository<City,String> {
 		
 		em.getTransaction().begin();
 		
-		if(read(entity.getZipCode())==null)
+		if(em.find(City.class,entity.getZipCode())==null)
 			em.persist(entity);
 		else 
 			throw new Exception("City with that zip code already exists");
@@ -44,8 +44,19 @@ public class CityRepository implements ICRUDRepository<City,String> {
 
 	@Override
 	public void delete(String id) throws Exception  {
-		// TODO Auto-generated method stub
+		EntityManager em = MyEntitnyManagerFactory
+				.getEntityManagerFactory()
+				.createEntityManager();
 		
+		em.getTransaction().begin();
+		City city = em.find(City.class, id);
+		if(city!=null) 
+			em.remove(city);
+		else 
+			throw new Exception("City with that zip code dosen't exists");
+		
+		em.getTransaction().commit();
+		em.close();
 	}
 
 	@Override

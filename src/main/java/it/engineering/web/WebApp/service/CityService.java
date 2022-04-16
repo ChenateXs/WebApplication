@@ -34,8 +34,7 @@ public class CityService implements ICRUDService<City, String>{
 
 	@Override
 	public void delete(String id) throws Exception {
-		// TODO Auto-generated method stub
-		
+		cityRepository.delete(id);
 	}
 
 	@Override

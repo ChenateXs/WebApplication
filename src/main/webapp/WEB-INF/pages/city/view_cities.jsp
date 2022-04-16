@@ -13,8 +13,8 @@
 </head>
 <jsp:include page="/WEB-INF/pages/header.jsp"></jsp:include>
 <body style="background-image: url('https://images.hdqwalls.com/download/dark-abstract-black-minimal-4k-q0-1920x1080.jpg');">
-  <div class="w-75 p-3" style="margin: 0 auto">
- 		<table class="w-100 table table-light table-striped">
+  <div class="w-75 p-3 text-white" style="margin: 0 auto">
+ 		<table class="w-100 table table-light table-striped ">
     		<thead>
         		<tr class="table-dark">
             		<th scope="col">Zip code</th>
@@ -28,12 +28,16 @@
 					<tr class="table-dark">
 						<td>${c.zipCode}</td>
       					<td>${c.name}</td>
-						<td><input type="submit" class="btn btn-outline-light" value="Update"/></td>
-						<td><input type="submit" class="btn btn-outline-light" value="Delete"/></td>
+      					<td><a class="btn btn-outline-light" href="#">Update</a></td>
+							<c:url var="urlDeleteCity" value="/application/delete_city">
+								<c:param name="zipCode" value="${c.zipCode}"></c:param>
+							</c:url>
+						<td><a class="btn btn-outline-light" href="${urlDeleteCity}">Delete</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
+		<label>${message}</label>
 	</div>
 </body>
 </html>
