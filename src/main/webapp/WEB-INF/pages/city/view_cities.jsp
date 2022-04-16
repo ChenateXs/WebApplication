@@ -13,25 +13,27 @@
 </head>
 <jsp:include page="/WEB-INF/pages/header.jsp"></jsp:include>
 <body style="background-image: url('https://images.hdqwalls.com/download/dark-abstract-black-minimal-4k-q0-1920x1080.jpg');">
-    <div class="position-absolute top-50 start-50 translate-middle">
-    <c:url value="/application/add_city" var="urlAddCity"></c:url>
-	<form action="${urlAddCity}" method="post">
-        <div style="text-align: center;">
-            <h2>Add city</h2>
-            <div class="m-1">
-                <label>Zip Code:</label>
-                <input type="number" class="zip_code" name="zip_code"/><br>
-            </div>
-            <div class="m-1">
-                <label>Name:</label>
-                <input type="text" class="name" name="name"/><br>
-            </div>
-            <div class="m-1 text-danger">
-                <label>${error_message}</label>
-            </div>
-            <input type="submit" value="Create">
-        </div>
-    </form>
-    </div>
+  <div class="w-75 p-3" style="margin: 0 auto">
+ 		<table class="w-100 table table-light table-striped">
+    		<thead>
+        		<tr class="table-dark">
+            		<th scope="col">Zip code</th>
+                	<th scope="col">Name</th>
+                	<th scope="col"></th>
+                	<th scope="col"></th>
+            	</tr>
+     		</thead>
+        	<tbody>
+				<c:forEach items="${cities}" var="c">
+					<tr class="table-dark">
+						<td>${c.zipCode}</td>
+      					<td>${c.name}</td>
+						<td><input type="submit" class="btn btn-outline-light" value="Update"/></td>
+						<td><input type="submit" class="btn btn-outline-light" value="Delete"/></td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+	</div>
 </body>
 </html>

@@ -12,7 +12,8 @@
     <title>Engineering</title>
 </head>
 <jsp:include page="header.jsp"></jsp:include>
-<body>
+<body style="background-image: url('https://images.hdqwalls.com/download/dark-abstract-black-minimal-4k-q0-1920x1080.jpg');">
+
 	<div>
 		<h2>Welcome ${sessionScope.login_user.firstname} what would u like to do?</h2>
 		

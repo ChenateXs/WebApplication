@@ -12,7 +12,7 @@
     <title>Engineering</title>
 </head>
 <jsp:include page="/WEB-INF/pages/header.jsp"></jsp:include>
-<body>
+<body style="background-image: url('https://images.hdqwalls.com/download/dark-abstract-black-minimal-4k-q0-1920x1080.jpg');">
     <div class="position-absolute top-50 start-50 translate-middle">
     <c:url value="/application/add_manufacturer" var="urlAddManufacturer"></c:url>
 	<form action="${urlAddManufacturer}" method="post">

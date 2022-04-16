@@ -11,11 +11,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>Login</title>
 </head>
-<body>
-    <div class="position-absolute top-50 start-50 translate-middle">
+<body style="background-image: url('https://images.hdqwalls.com/download/dark-abstract-black-minimal-4k-q0-1920x1080.jpg');">
+
+    <div class="position-absolute top-50 start-50 translate-middle border border-white rounded-3 text-white bg-dark">
     <c:url value="/application/login" var="urllogin"></c:url>
 	<form action="${urllogin}" method="post">
-        <div style="text-align: center;">
+        <div class="m-3" style="text-align: center">
             <h2>Login</h2>
             <div class="m-1">
                 <label>Username:</label>
@@ -28,7 +29,7 @@
             <div class="m-1 text-danger">
                 <label>${error_message}</label>
             </div>
-            <input type="submit" value="Login">
+            <input class="btn btn-outline-light" type="submit" value="Login">
         </div>
     </form>
     </div>
