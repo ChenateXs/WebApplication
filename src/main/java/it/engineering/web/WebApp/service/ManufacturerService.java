@@ -7,7 +7,7 @@ import it.engineering.web.WebApp.domain.City;
 import it.engineering.web.WebApp.domain.Manufacturer;
 import it.engineering.web.WebApp.repository.ManufacturerRepository;
 
-public class ManufacturerService implements ICRUDService<Manufacturer, String>{
+public class ManufacturerService implements ICRUDService<Manufacturer, Long>{
 
 	ManufacturerRepository manufacturerRepository;
 	
@@ -27,29 +27,38 @@ public class ManufacturerService implements ICRUDService<Manufacturer, String>{
 	}
 
 	@Override
-	public Manufacturer read(String id) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+	public Manufacturer read(Long id) throws Exception {
+		it.engineering.web.WebApp.entity.Manufacturer manufacturer = manufacturerRepository.read(id);
+		return new Manufacturer(
+				manufacturer.getId(),
+				manufacturer.getManufactortrId(),
+				manufacturer.getTaxId(),
+				manufacturer.getAddress(),
+				new City(manufacturer.getCity().getZipCode(),manufacturer.getCity().getName()));
 	}
 
 	@Override
-	public void update(String id, Manufacturer entity) throws Exception {
+	public void update(Long id, Manufacturer entity) throws Exception {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void delete(String id) throws Exception {
-		// TODO Auto-generated method stub
-		
+	public void delete(Long id) throws Exception {
+		manufacturerRepository.delete(id);	
 	}
 
 	@Override
 	public List<Manufacturer> getAll() {
 		List<it.engineering.web.WebApp.entity.Manufacturer> manufacturerEntities= manufacturerRepository.getAll();
 		List<Manufacturer> manufacturers = new ArrayList<Manufacturer>();
-		for(it.engineering.web.WebApp.entity.Manufacturer manufactureryE:manufacturerEntities) {
-			manufacturers.add(new Manufacturer(manufactureryE.getManufactortrId(), manufactureryE.getTaxId(), manufactureryE.getAddress(), new City(manufactureryE.getCity().getZipCode(), manufactureryE.getCity().getName())));
+		for(it.engineering.web.WebApp.entity.Manufacturer manufacturerE:manufacturerEntities) {
+			manufacturers.add(new Manufacturer(
+					manufacturerE.getId(),
+					manufacturerE.getManufactortrId(), 
+					manufacturerE.getTaxId(), 
+					manufacturerE.getAddress(), 
+					new City(manufacturerE.getCity().getZipCode(), manufacturerE.getCity().getName())));
 		}
 		return manufacturers;
 	}

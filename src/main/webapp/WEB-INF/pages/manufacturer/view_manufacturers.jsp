@@ -13,7 +13,7 @@
 </head>
 <jsp:include page="/WEB-INF/pages/header.jsp"></jsp:include>
 <body style="background-image: url('https://images.hdqwalls.com/download/dark-abstract-black-minimal-4k-q0-1920x1080.jpg');">
-  <div class="w-75 p-3" style="margin: 0 auto">
+  <div class="w-75 p-3 text-white" style="margin: 0 auto">
  		<table class="w-100 table table-light table-striped">
     		<thead>
         		<tr class="table-dark">
@@ -32,12 +32,24 @@
       					<td>${m.taxId}</td>
 						<td>${m.address}</td>
       					<td>${m.city.zipCode} ${m.city.name}</td>
-						<td><input type="submit" class="btn btn-outline-light" value="Update"/></td>
-						<td><input type="submit" class="btn btn-outline-light" value="Delete"/></td>
+						<c:url var="urlUpdateManufacturer" value="/application/update_manufacturer">
+								<c:param name="id" value="${m.id}"></c:param>
+								<c:param name="manufactortrId" value="${m.manufactortrId}"></c:param>
+								<c:param name="taxId" value="${m.taxId}"></c:param>
+								<c:param name="address" value="${m.address}"></c:param>
+								<c:param name="zipCode" value="${m.city.zipCode}"></c:param>
+								<c:param name="name" value="${m.city.name}"></c:param>
+							</c:url>
+      					<td><a class="btn btn-outline-light" href="${urlUpdateManufacturer}">Update</a></td>
+							<c:url var="urlDeleteManufacturer" value="/application/delete_manufacturer">
+								<c:param name="id" value="${m.id}"></c:param>
+							</c:url>
+						<td><a class="btn btn-outline-light" href="${urlDeleteManufacturer}">Delete</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
+		<label>${message}</label>
 	</div>
 </body>
 </html>

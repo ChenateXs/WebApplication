@@ -26,8 +26,11 @@ public interface WebConstants {
 
 	public static final String PATH_ADD_MANUFACTURER="/add_manufacturer";
 	public static final String PAGE_ADD_MANUFACTURER="/WEB-INF/pages/manufacturer/add_manufacturer.jsp";
-	
+
 	public static final String PATH_VIEW_MANUFACTURER="/view_manufacturers";
 	public static final String PAGE_VIEW_MANUFACTURER="/WEB-INF/pages/manufacturer/view_manufacturers.jsp";
+
+	public static final String PATH_DELETE_MANUFACTURER="/delete_manufacturer";
+	public static final String PAGE_DELETE_MANUFACTURER="/WEB-INF/pages/manufacturer/delete_manufacturer.jsp";
 	
 }

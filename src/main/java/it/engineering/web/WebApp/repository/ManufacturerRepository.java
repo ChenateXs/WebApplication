@@ -9,7 +9,7 @@ import it.engineering.web.WebApp.entity.City;
 import it.engineering.web.WebApp.entity.Manufacturer;
 import it.engineering.web.WebApp.persistence.MyEntitnyManagerFactory;
 
-public class ManufacturerRepository implements ICRUDRepository<Manufacturer, BigInteger>{
+public class ManufacturerRepository implements ICRUDRepository<Manufacturer, Long>{
 
 	@Override
 	public void create(Manufacturer entity) throws Exception {
@@ -27,21 +27,34 @@ public class ManufacturerRepository implements ICRUDRepository<Manufacturer, Big
 	}
 
 	@Override
-	public Manufacturer read(BigInteger id) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+	public Manufacturer read(Long id) throws Exception {
+		EntityManager em = MyEntitnyManagerFactory
+				.getEntityManagerFactory()
+				.createEntityManager();
+		
+		Manufacturer manufacturer = em.find(Manufacturer.class, id);
+		return manufacturer;
 	}
 
 	@Override
-	public void update(BigInteger id, Manufacturer entity) throws Exception {
+	public void update(Long id, Manufacturer entity) throws Exception {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void delete(BigInteger id) throws Exception {
-		// TODO Auto-generated method stub
-		
+	public void delete(Long id) throws Exception {
+		EntityManager em = MyEntitnyManagerFactory.getEntityManagerFactory().createEntityManager();
+
+		em.getTransaction().begin();
+		Manufacturer manufacturer = em.find(Manufacturer.class, id);
+		if (manufacturer != null)
+			em.remove(manufacturer);
+		else
+			throw new Exception("Manufacturer with that id dosen't exists");
+
+		em.getTransaction().commit();
+		em.close();
 	}
 
 	@Override
