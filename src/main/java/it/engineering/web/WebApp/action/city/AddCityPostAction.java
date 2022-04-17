@@ -14,9 +14,16 @@ public class AddCityPostAction extends AbstractAction {
 
 	@Override
 	public String executeRequest(HttpServletRequest request, HttpServletResponse response) {
-		City city = new City(request.getParameter("zip_code"),request.getParameter("name"));
-		CityRepository cityRepository = new CityRepository();
 		try {
+			String zipCode = request.getParameter("zip_code");
+			String name = request.getParameter("name");
+			
+			if(zipCode.equals("") || name.equals(""))
+				throw new Exception("All fields are required to be filled!!!");
+			
+			City city = new City(zipCode,name);
+			CityRepository cityRepository = new CityRepository();
+		
 			cityRepository.create(city);
 			request.setAttribute("message", "A city has been created.");
 			return WebConstants.PAGE_LOGIN;
