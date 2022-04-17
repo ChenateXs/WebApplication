@@ -11,11 +11,14 @@ import it.engineering.web.WebApp.service.CityService;
 public class UpdateCityPostAction extends AbstractAction {
 	@Override
 	public String executeRequest(HttpServletRequest request, HttpServletResponse response) {
-		String zipCode = request.getParameter("zipCode");
-		String name = request.getParameter("name");
-		String confirm = request.getParameter("confirm");
-		
 		try {
+			String zipCode = request.getParameter("zip_code");
+			String name = request.getParameter("name");
+			String confirm = request.getParameter("confirm");
+			
+			if(name.equals(""))
+				throw new Exception("All fields are required to be filled!!!");
+			
 			if (confirm.equals("Confirm")) {
 				new CityService().update(zipCode, new City(zipCode,name));
 

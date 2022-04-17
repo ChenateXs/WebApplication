@@ -9,6 +9,7 @@ import it.engineering.web.WebApp.action.AbstractAction;
 import it.engineering.web.WebApp.constant.WebConstants;
 import it.engineering.web.WebApp.domain.City;
 import it.engineering.web.WebApp.domain.Manufacturer;
+import it.engineering.web.WebApp.repository.CityRepository;
 import it.engineering.web.WebApp.service.CityService;
 import it.engineering.web.WebApp.service.ManufacturerService;
 
@@ -23,6 +24,9 @@ public class AddManufacturerPostAction extends AbstractAction{
 			String address = request.getParameter("address");
 			City city = new CityService().read(request.getParameter("city"));
 			
+			if(manufactortrId.equals("") || taxId.equals("") || address.equals(""))
+				throw new Exception("All fields are required to be filled!!!");
+			
 			Manufacturer manufacturer = new Manufacturer(manufactortrId,taxId,address,city);
 							
 			new ManufacturerService().create(manufacturer);
@@ -31,6 +35,7 @@ public class AddManufacturerPostAction extends AbstractAction{
 			return WebConstants.PAGE_LOGIN;
 		} catch (Exception e) {
 			request.setAttribute("error_message", e.getMessage());
+			request.setAttribute("cities", new CityRepository().getAll());
 			return WebConstants.PAGE_ADD_MANUFACTURER;
 		}
 	}

@@ -22,6 +22,9 @@ public class UpdateManufacturerPostAction extends AbstractAction {
 			City city = new CityService().read(request.getParameter("city"));
 			String confirm = request.getParameter("confirm");
 			
+			if(manufacturtrId.equals("") || taxId.equals("") || address.equals(""))
+				throw new Exception("All fields are required to be filled!!!");
+			
 			if (confirm.equals("Confirm")) {
 				new ManufacturerService().update(id, new Manufacturer(id,manufacturtrId,taxId,address,city));
 
