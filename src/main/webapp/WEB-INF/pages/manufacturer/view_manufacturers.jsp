@@ -32,18 +32,15 @@
       					<td>${m.taxId}</td>
 						<td>${m.address}</td>
       					<td>${m.city.zipCode} ${m.city.name}</td>
+						
 						<c:url var="urlUpdateManufacturer" value="/application/update_manufacturer">
-								<c:param name="id" value="${m.id}"></c:param>
-								<c:param name="manufactortrId" value="${m.manufactortrId}"></c:param>
-								<c:param name="taxId" value="${m.taxId}"></c:param>
-								<c:param name="address" value="${m.address}"></c:param>
-								<c:param name="zipCode" value="${m.city.zipCode}"></c:param>
-								<c:param name="name" value="${m.city.name}"></c:param>
-							</c:url>
+							<c:param name="id" value="${m.id}"></c:param>
+						</c:url>
       					<td><a class="btn btn-outline-light" href="${urlUpdateManufacturer}">Update</a></td>
-							<c:url var="urlDeleteManufacturer" value="/application/delete_manufacturer">
-								<c:param name="id" value="${m.id}"></c:param>
-							</c:url>
+      					
+						<c:url var="urlDeleteManufacturer" value="/application/delete_manufacturer">
+							<c:param name="id" value="${m.id}"></c:param>
+						</c:url>
 						<td><a class="btn btn-outline-light" href="${urlDeleteManufacturer}">Delete</a></td>
 					</tr>
 				</c:forEach>

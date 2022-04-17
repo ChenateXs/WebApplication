@@ -38,7 +38,18 @@ public class ManufacturerRepository implements ICRUDRepository<Manufacturer, Lon
 
 	@Override
 	public void update(Long id, Manufacturer entity) throws Exception {
-		// TODO Auto-generated method stub
+		EntityManager em = MyEntitnyManagerFactory.getEntityManagerFactory().createEntityManager();
+		Manufacturer existingManufacturer = em.find(Manufacturer.class, id);
+		if (existingManufacturer != null) {
+			em.getTransaction().begin();
+			existingManufacturer.setManufactortrId(entity.getManufactortrId());
+			existingManufacturer.setTaxId(entity.getTaxId());
+			existingManufacturer.setAddress(entity.getAddress());
+			existingManufacturer.setCity(em.find(City.class, existingManufacturer.getCity().getZipCode()));
+			em.getTransaction().commit();
+		} else {
+			throw new Exception("Manufacturer with that zip code dosen't exists");
+		}
 		
 	}
 

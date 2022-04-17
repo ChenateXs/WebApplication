@@ -39,8 +39,13 @@ public class ManufacturerService implements ICRUDService<Manufacturer, Long>{
 
 	@Override
 	public void update(Long id, Manufacturer entity) throws Exception {
-		// TODO Auto-generated method stub
-		
+		manufacturerRepository.update(id, new
+				it.engineering.web.WebApp.entity.Manufacturer(
+						entity.getId(),
+						entity.getManufactortrId(),
+						entity.getTaxId(),
+						entity.getAddress(),
+						new it.engineering.web.WebApp.entity.City(entity.getCity().getZipCode(),entity.getCity().getName())));	
 	}
 
 	@Override

@@ -15,6 +15,8 @@ import it.engineering.web.WebApp.action.manufacturer.AddManufacturerGetAction;
 import it.engineering.web.WebApp.action.manufacturer.AddManufacturerPostAction;
 import it.engineering.web.WebApp.action.manufacturer.DeleteManufacturerGetAction;
 import it.engineering.web.WebApp.action.manufacturer.DeleteManufacturerPostAction;
+import it.engineering.web.WebApp.action.manufacturer.UpdateManufacturerGetAction;
+import it.engineering.web.WebApp.action.manufacturer.UpdateManufacturerPostAction;
 import it.engineering.web.WebApp.action.manufacturer.ViewManufacturersAction;
 import it.engineering.web.WebApp.constant.WebConstants;
 
@@ -69,6 +71,12 @@ public class ActionFactory {
 				action = new DeleteManufacturerGetAction();
 			else if(method.equalsIgnoreCase("POST"))
 				action = new DeleteManufacturerPostAction();
+			break;
+		case WebConstants.PATH_UPDATE_MANUFACTURER:
+			if(method.equalsIgnoreCase("GET"))
+				action = new UpdateManufacturerGetAction();
+			else if(method.equalsIgnoreCase("POST"))
+				action = new UpdateManufacturerPostAction();
 			break;
 		}
 		return action;

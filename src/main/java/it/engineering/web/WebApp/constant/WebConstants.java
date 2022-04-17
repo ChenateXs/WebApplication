@@ -32,5 +32,8 @@ public interface WebConstants {
 
 	public static final String PATH_DELETE_MANUFACTURER="/delete_manufacturer";
 	public static final String PAGE_DELETE_MANUFACTURER="/WEB-INF/pages/manufacturer/delete_manufacturer.jsp";
+
+	public static final String PATH_UPDATE_MANUFACTURER="/update_manufacturer";
+	public static final String PAGE_UPDATE_MANUFACTURER="/WEB-INF/pages/manufacturer/update_manufacturer.jsp";
 	
 }
