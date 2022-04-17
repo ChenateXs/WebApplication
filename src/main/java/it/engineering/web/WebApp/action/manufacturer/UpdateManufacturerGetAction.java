@@ -16,7 +16,6 @@ public class UpdateManufacturerGetAction extends AbstractAction {
 		try {
 			Manufacturer manufacturer= new ManufacturerService().read(Long.parseLong(request.getParameter("id")));
 			request.setAttribute("manufacturer", manufacturer);
-			System.out.println(manufacturer);
 			request.setAttribute("cities", new CityRepository().getAll());
 			return WebConstants.PAGE_UPDATE_MANUFACTURER;
 		} catch (Exception e) {

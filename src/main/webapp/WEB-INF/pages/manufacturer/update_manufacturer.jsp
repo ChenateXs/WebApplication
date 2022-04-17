@@ -38,7 +38,7 @@
             		<td>
             			<select class="form-select" aria-label="Default select example" name="city">
   							<c:forEach items="${cities}" var="c">
-  								<option value="${c.zipCode}" name="city" selected="${manufacturer.city.zipCode}">${c.zipCode} ${c.name}</option>
+  								<option value="${c.zipCode}" ${c.zipCode==manufacturer.city.zipCode ? 'selected':''}>${c.zipCode} ${c.name}</option>
   							</c:forEach>
   						</select>
   					</td>

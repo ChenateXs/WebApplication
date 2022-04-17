@@ -45,7 +45,7 @@ public class ManufacturerRepository implements ICRUDRepository<Manufacturer, Lon
 			existingManufacturer.setManufactortrId(entity.getManufactortrId());
 			existingManufacturer.setTaxId(entity.getTaxId());
 			existingManufacturer.setAddress(entity.getAddress());
-			existingManufacturer.setCity(em.find(City.class, existingManufacturer.getCity().getZipCode()));
+			existingManufacturer.setCity(em.find(City.class, entity.getCity().getZipCode()));
 			em.getTransaction().commit();
 		} else {
 			throw new Exception("Manufacturer with that zip code dosen't exists");
