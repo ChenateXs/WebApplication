@@ -18,7 +18,7 @@
     	<c:param name="zipCode" value="${city.zipCode}"></c:param>
     </c:url>
 	<form action="${urlDeleteCity}" method="post">
-        <div style="text-align: center;" class="m-3">
+        <div style="text-align: center;" class="m-5">
             <h3>Are you sure you want to delete: ${city.zipCode} ${city.name}</h3>
             <input type="submit" name="confirm" value="Yes" class="btn btn-outline-light"/>
             <input type="submit" name="confirm" value="No" class="btn btn-outline-light"/>

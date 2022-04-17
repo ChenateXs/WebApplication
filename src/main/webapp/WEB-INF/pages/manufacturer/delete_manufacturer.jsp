@@ -18,7 +18,7 @@
     	<c:param name="id" value="${manufacturtr.id}"></c:param>
     </c:url>
 	<form action="${urlDeleteManufacturer}" method="post">
-        <div style="text-align: center;" class="m-3">
+        <div style="text-align: center;" class="m-5">
             <h3>Are you sure you want to delete manufacturer with id: ${manufacturtr.manufactortrId}</h3>
             <input type="submit" name="confirm" value="Yes" class="btn btn-outline-light"/>
             <input type="submit" name="confirm" value="No" class="btn btn-outline-light"/>

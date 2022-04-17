@@ -18,7 +18,7 @@
 		<c:param name="id" value="${manufacturer.id}"></c:param>
     </c:url>
 	<form action="${urlUpdateManufacturer}" method="post">
-        <div style="text-align: center;" class="m-3">
+        <div style="text-align: center;" class="m-5">
             <h3>Update</h3>
             <table>
             	<tr>

@@ -13,7 +13,7 @@
 </head>
 <jsp:include page="/WEB-INF/pages/header.jsp"></jsp:include>
 <body style="background-image: url('https://images.hdqwalls.com/download/dark-abstract-black-minimal-4k-q0-1920x1080.jpg');">
-  <div class="w-75 p-3 text-white" style="margin: 0 auto">
+  <div class="w-75 p-5 text-white" style="margin: 0 auto">
  		<table class="w-100 table table-light table-striped ">
     		<thead>
         		<tr class="table-dark">

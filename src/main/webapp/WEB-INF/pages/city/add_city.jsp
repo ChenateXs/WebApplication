@@ -16,7 +16,7 @@
     <div class="position-absolute top-50 start-50 translate-middle border border-white rounded-3 text-white bg-dark">
     <c:url value="/application/add_city" var="urlAddCity"></c:url>
 	<form action="${urlAddCity}" method="post">
-        <div style="text-align: center;" class="m-3">
+        <div style="text-align: center;" class="m-5">
             <h2>Add city</h2>
             <div class="m-1">
                 <label>Zip Code:</label>
@@ -24,12 +24,12 @@
             </div>
             <div class="m-1">
                 <label>Name:</label>
-                <input type="text" class="name" name="name"/><br>
+                <input type="text" class="name" name="name" /><br>
             </div>
             <div class="m-1 text-danger">
                 <label>${error_message}</label>
             </div>
-            <input type="submit" value="Create">
+            <input type="submit" value="Create" class="btn btn-outline-light">
         </div>
     </form>
     </div>

@@ -13,23 +13,30 @@
 </head>
 <body style="background-image: url('https://images.hdqwalls.com/download/dark-abstract-black-minimal-4k-q0-1920x1080.jpg');">
 
-    <div class="position-absolute top-50 start-50 translate-middle border border-white rounded-3 text-white bg-dark">
+    <div class="position-absolute top-50 start-50 translate-middle border border-white rounded-3 text-white bg-dark w-25 h-25">
     <c:url value="/application/login" var="urllogin"></c:url>
 	<form action="${urllogin}" method="post">
-        <div class="m-3" style="text-align: center">
-            <h2>Login</h2>
-            <div class="m-1">
-                <label>Username:</label>
-                <input type="text" class="username" name="username"/><br>
-            </div>
-            <div class="m-1">
-                <label>Password:</label>
-                <input type="password" class="password" name="password"/><br>
-            </div>
-            <div class="m-1 text-danger">
-                <label>${error_message}</label>
-            </div>
-            <input class="btn btn-outline-light" type="submit" value="Login">
+        <div class="d-flex justify-content-center m-5" style="text-align: center;">
+            <table>
+            	<tr>
+            		<td colspan="2"><h2>Login</h2></td>
+            	</tr>
+            	
+            	<tr>
+            		<td><label>Username:</label></td>
+            		<td ><input type="text" class="username" name="username"/></td>
+            	</tr>
+            	<tr>
+            		<td><label>Password:</label></td>
+            		<td><input type="password" class="password" name="password"/><br></td>
+            	</tr>
+            	<tr>
+            		<td colspan="2"><input class="btn btn-outline-light" type="submit" value="Login"></td>
+            	</tr>
+            	<tr>
+            		<td colspan="2" class="m-1 text-danger"><label>${error_message}</label></td>
+            	</tr>
+            </table>
         </div>
     </form>
     </div>

@@ -16,7 +16,7 @@
     <div class="position-absolute top-50 start-50 translate-middle border border-white rounded-3 text-white bg-dark">
     <c:url value="/application/update_city" var="urlUpdateCity"></c:url>
 	<form action="${urlUpdateCity}" method="post">
-        <div style="text-align: center;" class="m-3">
+        <div style="text-align: center;" class="m-5">
             <h3>Update</h3>
             <table>
             	<tr>

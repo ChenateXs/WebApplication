@@ -13,8 +13,8 @@
 </head>
 <jsp:include page="header.jsp"></jsp:include>
 <body style="background-image: url('https://images.hdqwalls.com/download/dark-abstract-black-minimal-4k-q0-1920x1080.jpg');">
-	<div class="text-white">
-		<h2>Welcome ${sessionScope.login_user.firstname} what would you like to do?</h2>
+	<div class="position-absolute top-50 start-50 translate-middle border border-white rounded-3 text-white bg-dark w-50 h-75">
+    	<h2>Welcome ${sessionScope.login_user.firstname} what would you like to do?</h2>
 		
 		<h3>${message}</h3>
 	</div>    
