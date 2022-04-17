@@ -28,8 +28,9 @@ public class CityService implements ICRUDService<City, String>{
 
 	@Override
 	public void update(String id, City entity) throws Exception {
-		// TODO Auto-generated method stub
+		it.engineering.web.WebApp.entity.City city = new it.engineering.web.WebApp.entity.City(entity.getZipCode(),entity.getName());
 		
+		cityRepository.update(id,city);
 	}
 
 	@Override

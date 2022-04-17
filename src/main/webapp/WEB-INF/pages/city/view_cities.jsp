@@ -28,7 +28,11 @@
 					<tr class="table-dark">
 						<td>${c.zipCode}</td>
       					<td>${c.name}</td>
-      					<td><a class="btn btn-outline-light" href="#">Update</a></td>
+      					<c:url var="urlUpdateCity" value="/application/update_city">
+								<c:param name="zipCode" value="${c.zipCode}"></c:param>
+								<c:param name="name" value="${c.name}"></c:param>
+							</c:url>
+      					<td><a class="btn btn-outline-light" href="${urlUpdateCity}">Update</a></td>
 							<c:url var="urlDeleteCity" value="/application/delete_city">
 								<c:param name="zipCode" value="${c.zipCode}"></c:param>
 							</c:url>

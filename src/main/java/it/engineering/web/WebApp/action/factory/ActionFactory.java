@@ -6,6 +6,8 @@ import it.engineering.web.WebApp.action.city.AddCityGetAction;
 import it.engineering.web.WebApp.action.city.AddCityPostAction;
 import it.engineering.web.WebApp.action.city.DeleteCityGetAction;
 import it.engineering.web.WebApp.action.city.DeleteCityPostAction;
+import it.engineering.web.WebApp.action.city.UpdateCityGetAction;
+import it.engineering.web.WebApp.action.city.UpdateCityPostAction;
 import it.engineering.web.WebApp.action.city.ViewCityAction;
 import it.engineering.web.WebApp.action.login.LoginAction;
 import it.engineering.web.WebApp.action.logout.LogoutAction;
@@ -43,6 +45,12 @@ public class ActionFactory {
 				action = new DeleteCityGetAction();
 			else if(method.equalsIgnoreCase("POST"))
 				action = new DeleteCityPostAction();
+			break;
+		case WebConstants.PATH_UPDATE_CITY:
+			if(method.equalsIgnoreCase("GET"))
+				action = new UpdateCityGetAction();
+			else if(method.equalsIgnoreCase("POST"))
+				action = new UpdateCityPostAction();
 			break;
 		case WebConstants.PATH_ADD_MANUFACTURER:
 			if(method.equalsIgnoreCase("GET"))
