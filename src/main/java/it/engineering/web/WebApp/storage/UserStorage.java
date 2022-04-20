@@ -4,20 +4,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 import it.engineering.web.WebApp.domain.User;
-import it.engineering.web.WebApp.service.UserService;
+import it.engineering.web.WebApp.service.IcrudService;
+import it.engineering.web.WebApp.service.impl.UserService;
+import it.engineering.web.WebApp.service.impl.spring.UserSpringService;
 
-public class UserStorage {
+public class UserStorage{
 	private List<User> users;
 	private static UserStorage instance;
-	private UserService userService;
+	private IcrudService icrudService;
 	
-	public UserStorage() {
-		userService = new UserService();
+	public UserStorage(){
+		icrudService = new UserService();
 		
-		users = userService.getAll();
+		users = icrudService.getAll();
 	}
 	
-	public static UserStorage	getInstance() {
+	public static UserStorage getInstance() {
 		if(instance == null) instance = new UserStorage();
 		return instance;
 	}

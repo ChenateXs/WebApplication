@@ -1,4 +1,4 @@
-package it.engineering.web.WebApp.repository;
+package it.engineering.web.WebApp.repository.impl;
 
 import java.math.BigInteger;
 import java.util.List;
@@ -8,8 +8,9 @@ import javax.persistence.EntityManager;
 import it.engineering.web.WebApp.entity.City;
 import it.engineering.web.WebApp.entity.Manufacturer;
 import it.engineering.web.WebApp.persistence.MyEntitnyManagerFactory;
+import it.engineering.web.WebApp.repository.IcrudRepository;
 
-public class ManufacturerRepository implements ICRUDRepository<Manufacturer, Long>{
+public class ManufacturerRepository implements IcrudRepository<Manufacturer, Long>{
 
 	@Override
 	public void create(Manufacturer entity) throws Exception {

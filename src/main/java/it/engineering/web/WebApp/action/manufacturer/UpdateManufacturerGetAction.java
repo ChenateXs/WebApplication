@@ -6,8 +6,8 @@ import javax.servlet.http.HttpServletResponse;
 import it.engineering.web.WebApp.action.AbstractAction;
 import it.engineering.web.WebApp.constant.WebConstants;
 import it.engineering.web.WebApp.domain.Manufacturer;
-import it.engineering.web.WebApp.repository.CityRepository;
-import it.engineering.web.WebApp.service.ManufacturerService;
+import it.engineering.web.WebApp.repository.impl.CityRepository;
+import it.engineering.web.WebApp.service.impl.ManufacturerService;
 
 public class UpdateManufacturerGetAction extends AbstractAction {
 

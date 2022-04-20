@@ -5,8 +5,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import it.engineering.web.WebApp.action.AbstractAction;
 import it.engineering.web.WebApp.constant.WebConstants;
-import it.engineering.web.WebApp.service.CityService;
-import it.engineering.web.WebApp.service.ManufacturerService;
+import it.engineering.web.WebApp.service.impl.CityService;
+import it.engineering.web.WebApp.service.impl.ManufacturerService;
 
 public class DeleteManufacturerPostAction extends AbstractAction {
 

@@ -1,12 +1,13 @@
-package it.engineering.web.WebApp.service;
+package it.engineering.web.WebApp.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import it.engineering.web.WebApp.domain.City;
-import it.engineering.web.WebApp.repository.CityRepository;
+import it.engineering.web.WebApp.repository.impl.CityRepository;
+import it.engineering.web.WebApp.service.IcrudService;
 
-public class CityService implements ICRUDService<City, String>{
+public class CityService implements IcrudService<City, String>{
 	CityRepository cityRepository;
 	
 	public CityService() {

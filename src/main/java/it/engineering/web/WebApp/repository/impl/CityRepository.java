@@ -1,14 +1,14 @@
-package it.engineering.web.WebApp.repository;
+package it.engineering.web.WebApp.repository.impl;
 
-import java.math.BigInteger;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 
 import it.engineering.web.WebApp.entity.City;
 import it.engineering.web.WebApp.persistence.MyEntitnyManagerFactory;
+import it.engineering.web.WebApp.repository.IcrudRepository;
 
-public class CityRepository implements ICRUDRepository<City, String> {
+public class CityRepository implements IcrudRepository<City, String> {
 
 	@Override
 	public void create(City entity) throws Exception {

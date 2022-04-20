@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import it.engineering.web.WebApp.action.AbstractAction;
 import it.engineering.web.WebApp.constant.WebConstants;
 import it.engineering.web.WebApp.domain.User;
+import it.engineering.web.WebApp.storage.UserSpringStorage;
 import it.engineering.web.WebApp.storage.UserStorage;
 
 public class LoginAction extends AbstractAction{
@@ -42,7 +43,7 @@ public class LoginAction extends AbstractAction{
 			throw new Exception("Username and password need to be felled!!!");
 		}
 		
-		List<User> users = UserStorage.getInstance().getUsers(); 
+		List<User> users = UserSpringStorage.getInstance(request).getUsers(); 
 		@SuppressWarnings("unchecked")
 		List<User> loggedInUsers = (List<User>)request.getServletContext().getAttribute("logged_in_users");
 		

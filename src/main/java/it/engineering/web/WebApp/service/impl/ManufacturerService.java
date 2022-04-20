@@ -1,13 +1,14 @@
-package it.engineering.web.WebApp.service;
+package it.engineering.web.WebApp.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import it.engineering.web.WebApp.domain.City;
 import it.engineering.web.WebApp.domain.Manufacturer;
-import it.engineering.web.WebApp.repository.ManufacturerRepository;
+import it.engineering.web.WebApp.repository.impl.ManufacturerRepository;
+import it.engineering.web.WebApp.service.IcrudService;
 
-public class ManufacturerService implements ICRUDService<Manufacturer, Long>{
+public class ManufacturerService implements IcrudService<Manufacturer, Long>{
 
 	ManufacturerRepository manufacturerRepository;
 	
