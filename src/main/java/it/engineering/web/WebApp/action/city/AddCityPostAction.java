@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import it.engineering.web.WebApp.action.AbstractAction;
 import it.engineering.web.WebApp.constant.WebConstants;
-import it.engineering.web.WebApp.entity.City;
+import it.engineering.web.WebApp.entity.CityEntity;
 import it.engineering.web.WebApp.repository.impl.CityRepository;
 
 public class AddCityPostAction extends AbstractAction {
@@ -21,7 +21,7 @@ public class AddCityPostAction extends AbstractAction {
 			if(zipCode.equals("") || name.equals(""))
 				throw new Exception("All fields are required to be filled!!!");
 			
-			City city = new City(zipCode,name);
+			CityEntity city = new CityEntity(zipCode,name);
 			CityRepository cityRepository = new CityRepository();
 		
 			cityRepository.create(city);

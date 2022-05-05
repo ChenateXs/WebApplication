@@ -3,12 +3,12 @@ package it.engineering.web.WebApp.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-import it.engineering.web.WebApp.domain.City;
-import it.engineering.web.WebApp.domain.Manufacturer;
+import it.engineering.web.WebApp.dto.CityDto;
+import it.engineering.web.WebApp.dto.ManufacturerDto;
 import it.engineering.web.WebApp.repository.impl.ManufacturerRepository;
 import it.engineering.web.WebApp.service.IcrudService;
 
-public class ManufacturerService implements IcrudService<Manufacturer, Long>{
+public class ManufacturerService implements IcrudService<ManufacturerDto, Long>{
 
 	ManufacturerRepository manufacturerRepository;
 	
@@ -17,36 +17,36 @@ public class ManufacturerService implements IcrudService<Manufacturer, Long>{
 	}
 	
 	@Override
-	public void create(Manufacturer entity) throws Exception {
-		it.engineering.web.WebApp.entity.Manufacturer manufacturer = 
-				new it.engineering.web.WebApp.entity.Manufacturer(
+	public void create(ManufacturerDto entity) throws Exception {
+		it.engineering.web.WebApp.entity.ManufacturerEntity manufacturer = 
+				new it.engineering.web.WebApp.entity.ManufacturerEntity(
 						entity.getManufactortrId(),
 						entity.getTaxId(),
 						entity.getAddress(),
-						new it.engineering.web.WebApp.entity.City(entity.getCity().getZipCode(),entity.getCity().getName()));
+						new it.engineering.web.WebApp.entity.CityEntity(entity.getCity().getZipCode(),entity.getCity().getName()));
 		manufacturerRepository.create(manufacturer);
 	}
 
 	@Override
-	public Manufacturer read(Long id) throws Exception {
-		it.engineering.web.WebApp.entity.Manufacturer manufacturer = manufacturerRepository.read(id);
-		return new Manufacturer(
+	public ManufacturerDto read(Long id) throws Exception {
+		it.engineering.web.WebApp.entity.ManufacturerEntity manufacturer = manufacturerRepository.read(id);
+		return new ManufacturerDto(
 				manufacturer.getId(),
 				manufacturer.getManufactortrId(),
 				manufacturer.getTaxId(),
 				manufacturer.getAddress(),
-				new City(manufacturer.getCity().getZipCode(),manufacturer.getCity().getName()));
+				new CityDto(manufacturer.getCity().getZipCode(),manufacturer.getCity().getName()));
 	}
 
 	@Override
-	public void update(Long id, Manufacturer entity) throws Exception {
+	public void update(Long id, ManufacturerDto entity) throws Exception {
 		manufacturerRepository.update(id, new
-				it.engineering.web.WebApp.entity.Manufacturer(
+				it.engineering.web.WebApp.entity.ManufacturerEntity(
 						entity.getId(),
 						entity.getManufactortrId(),
 						entity.getTaxId(),
 						entity.getAddress(),
-						new it.engineering.web.WebApp.entity.City(entity.getCity().getZipCode(),entity.getCity().getName())));	
+						new it.engineering.web.WebApp.entity.CityEntity(entity.getCity().getZipCode(),entity.getCity().getName())));	
 	}
 
 	@Override
@@ -55,16 +55,16 @@ public class ManufacturerService implements IcrudService<Manufacturer, Long>{
 	}
 
 	@Override
-	public List<Manufacturer> getAll() {
-		List<it.engineering.web.WebApp.entity.Manufacturer> manufacturerEntities= manufacturerRepository.getAll();
-		List<Manufacturer> manufacturers = new ArrayList<Manufacturer>();
-		for(it.engineering.web.WebApp.entity.Manufacturer manufacturerE:manufacturerEntities) {
-			manufacturers.add(new Manufacturer(
+	public List<ManufacturerDto> getAll() {
+		List<it.engineering.web.WebApp.entity.ManufacturerEntity> manufacturerEntities= manufacturerRepository.getAll();
+		List<ManufacturerDto> manufacturers = new ArrayList<ManufacturerDto>();
+		for(it.engineering.web.WebApp.entity.ManufacturerEntity manufacturerE:manufacturerEntities) {
+			manufacturers.add(new ManufacturerDto(
 					manufacturerE.getId(),
 					manufacturerE.getManufactortrId(), 
 					manufacturerE.getTaxId(), 
 					manufacturerE.getAddress(), 
-					new City(manufacturerE.getCity().getZipCode(), manufacturerE.getCity().getName())));
+					new CityDto(manufacturerE.getCity().getZipCode(), manufacturerE.getCity().getName())));
 		}
 		return manufacturers;
 	}

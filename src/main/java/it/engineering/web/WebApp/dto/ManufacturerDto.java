@@ -1,8 +1,8 @@
-package it.engineering.web.WebApp.domain;
+package it.engineering.web.WebApp.dto;
 
 import java.util.Objects;
 
-public class Manufacturer {
+public class ManufacturerDto {
 	private long id;
 
 	private String manufactortrId;
@@ -11,14 +11,14 @@ public class Manufacturer {
 	
 	private String address;
 
-	private City city;
+	private CityDto city;
 
-	public Manufacturer() {
+	public ManufacturerDto() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Manufacturer(String manufactortrId, String taxId, String address, City city) {
+	public ManufacturerDto(String manufactortrId, String taxId, String address, CityDto city) {
 		super();
 		this.address = address;
 		this.manufactortrId = manufactortrId;
@@ -26,7 +26,7 @@ public class Manufacturer {
 		this.city = city;
 	}
 
-	public Manufacturer(long id, String manufactortrId, String taxId, String address, City city) {
+	public ManufacturerDto(long id, String manufactortrId, String taxId, String address, CityDto city) {
 		super();
 		this.id = id;
 		this.address = address;
@@ -67,11 +67,11 @@ public class Manufacturer {
 		this.taxId = taxId;
 	}
 
-	public City getCity() {
+	public CityDto getCity() {
 		return city;
 	}
 
-	public void setCity(City city) {
+	public void setCity(CityDto city) {
 		this.city = city;
 	}
 
@@ -88,7 +88,7 @@ public class Manufacturer {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Manufacturer other = (Manufacturer) obj;
+		ManufacturerDto other = (ManufacturerDto) obj;
 		return Objects.equals(manufactortrId, other.manufactortrId);
 	}
 

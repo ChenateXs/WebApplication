@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import it.engineering.web.WebApp.action.AbstractAction;
 import it.engineering.web.WebApp.constant.WebConstants;
-import it.engineering.web.WebApp.domain.City;
-import it.engineering.web.WebApp.domain.Manufacturer;
+import it.engineering.web.WebApp.dto.CityDto;
+import it.engineering.web.WebApp.dto.ManufacturerDto;
 import it.engineering.web.WebApp.repository.impl.CityRepository;
 import it.engineering.web.WebApp.service.impl.CityService;
 import it.engineering.web.WebApp.service.impl.ManufacturerService;
@@ -22,12 +22,12 @@ public class AddManufacturerPostAction extends AbstractAction{
 			String manufactortrId = request.getParameter("manufactortr_id");
 			String taxId = request.getParameter("tax_id");
 			String address = request.getParameter("address");
-			City city = new CityService().read(request.getParameter("city"));
+			CityDto city = new CityService().read(request.getParameter("city"));
 			
 			if(manufactortrId.equals("") || taxId.equals("") || address.equals(""))
 				throw new Exception("All fields are required to be filled!!!");
 			
-			Manufacturer manufacturer = new Manufacturer(manufactortrId,taxId,address,city);
+			ManufacturerDto manufacturer = new ManufacturerDto(manufactortrId,taxId,address,city);
 							
 			new ManufacturerService().create(manufacturer);
 			

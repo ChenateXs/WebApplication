@@ -11,8 +11,8 @@ import java.util.Objects;
  * 
  */
 @Entity
-@NamedQuery(name="City.findAll", query="SELECT c FROM City c")
-public class City implements Serializable {
+@NamedQuery(name="CityEntity.findAll", query="SELECT c FROM CityEntity c")
+public class CityEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -21,10 +21,10 @@ public class City implements Serializable {
 
 	private String name;
 	
-	public City() {
+	public CityEntity() {
 	}
 
-	public City(String zipCode, String name) {
+	public CityEntity(String zipCode, String name) {
 		super();
 		this.name = name;
 		this.zipCode = zipCode;
@@ -59,7 +59,7 @@ public class City implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		City other = (City) obj;
+		CityEntity other = (CityEntity) obj;
 		return Objects.equals(name, other.name) && Objects.equals(zipCode, other.zipCode);
 	}
 

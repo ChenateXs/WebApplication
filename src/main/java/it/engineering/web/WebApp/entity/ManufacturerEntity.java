@@ -11,8 +11,8 @@ import java.util.Objects;
  * 
  */
 @Entity
-@NamedQuery(name="Manufacturer.findAll", query="SELECT m FROM Manufacturer m")
-public class Manufacturer implements Serializable {
+@NamedQuery(name="ManufacturerEntity.findAll", query="SELECT m FROM ManufacturerEntity m")
+public class ManufacturerEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -31,12 +31,12 @@ public class Manufacturer implements Serializable {
 			cascade = {CascadeType.MERGE,CascadeType.PERSIST}
 			)
 	@JoinColumn(name="zip_code")
-	private City city;
+	private CityEntity city;
 
-	public Manufacturer() {
+	public ManufacturerEntity() {
 	}
 	
-	public Manufacturer(String manufactortrId, String taxId, String address, City city) {
+	public ManufacturerEntity(String manufactortrId, String taxId, String address, CityEntity city) {
 		super();
 		this.address = address;
 		this.manufactortrId = manufactortrId;
@@ -44,7 +44,7 @@ public class Manufacturer implements Serializable {
 		this.city = city;
 	}
 
-	public Manufacturer(long id,  String manufactortrId, String taxId, String address, City city) {
+	public ManufacturerEntity(long id,  String manufactortrId, String taxId, String address, CityEntity city) {
 		super();
 		this.id = id;
 		this.address = address;
@@ -86,11 +86,11 @@ public class Manufacturer implements Serializable {
 		this.taxId = taxId;
 	}
 
-	public City getCity() {
+	public CityEntity getCity() {
 		return city;
 	}
 
-	public void setCity(City city) {
+	public void setCity(CityEntity city) {
 		this.city = city;
 	}
 
@@ -107,7 +107,7 @@ public class Manufacturer implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Manufacturer other = (Manufacturer) obj;
+		ManufacturerEntity other = (ManufacturerEntity) obj;
 		return Objects.equals(address, other.address) && Objects.equals(city, other.city) && id == other.id
 				&& Objects.equals(manufactortrId, other.manufactortrId) && Objects.equals(taxId, other.taxId);
 	}

@@ -36,6 +36,7 @@ public class FrontController extends HttpServlet {
 	
 	void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String page = applicationController.processRequest(request, response);
+		//na osnovu pogleda vrati konkretnu stranicu korisniku
 		request.getRequestDispatcher(page).forward(request, response);
 	}
 }

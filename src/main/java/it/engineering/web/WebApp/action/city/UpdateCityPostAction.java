@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import it.engineering.web.WebApp.action.AbstractAction;
 import it.engineering.web.WebApp.constant.WebConstants;
-import it.engineering.web.WebApp.domain.City;
+import it.engineering.web.WebApp.dto.CityDto;
 import it.engineering.web.WebApp.service.impl.CityService;
 
 public class UpdateCityPostAction extends AbstractAction {
@@ -20,7 +20,7 @@ public class UpdateCityPostAction extends AbstractAction {
 				throw new Exception("All fields are required to be filled!!!");
 			
 			if (confirm.equals("Confirm")) {
-				new CityService().update(zipCode, new City(zipCode,name));
+				new CityService().update(zipCode, new CityDto(zipCode,name));
 
 				request.setAttribute("message", "City has succesfully been updated.");
 				request.setAttribute("cities", new CityService().getAll());

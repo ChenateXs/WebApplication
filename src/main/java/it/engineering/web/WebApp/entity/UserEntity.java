@@ -11,8 +11,8 @@ import java.util.Objects;
  * 
  */
 @Entity
-@NamedQuery(name="User.findAll", query="SELECT u FROM User u")
-public class User implements Serializable {
+@NamedQuery(name="UserEntity.findAll", query="SELECT u FROM UserEntity u")
+public class UserEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -27,10 +27,10 @@ public class User implements Serializable {
 
 	private String username;
 
-	public User() {
+	public UserEntity() {
 	}
 	
-	public User(String username, String password, String firstname, String lastname) {
+	public UserEntity(String username, String password, String firstname, String lastname) {
 		super();
 		this.firstname = firstname;
 		this.lastname = lastname;
@@ -38,7 +38,7 @@ public class User implements Serializable {
 		this.username = username;
 	}
 
-	public User(long id, String username, String password, String firstname, String lastname) {
+	public UserEntity(long id, String username, String password, String firstname, String lastname) {
 		super();
 		this.id = id;
 		this.firstname = firstname;
@@ -100,7 +100,7 @@ public class User implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		User other = (User) obj;
+		UserEntity other = (UserEntity) obj;
 		return Objects.equals(password, other.password) && Objects.equals(username, other.username);
 	}
 

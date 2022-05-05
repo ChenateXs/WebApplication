@@ -5,8 +5,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import it.engineering.web.WebApp.action.AbstractAction;
 import it.engineering.web.WebApp.constant.WebConstants;
-import it.engineering.web.WebApp.domain.City;
-import it.engineering.web.WebApp.domain.Manufacturer;
+import it.engineering.web.WebApp.dto.CityDto;
+import it.engineering.web.WebApp.dto.ManufacturerDto;
 import it.engineering.web.WebApp.service.impl.CityService;
 import it.engineering.web.WebApp.service.impl.ManufacturerService;
 
@@ -19,14 +19,14 @@ public class UpdateManufacturerPostAction extends AbstractAction {
 			String manufacturtrId = request.getParameter("manufacturerId");
 			String taxId = request.getParameter("taxId");
 			String address = request.getParameter("address");
-			City city = new CityService().read(request.getParameter("city"));
+			CityDto city = new CityService().read(request.getParameter("city"));
 			String confirm = request.getParameter("confirm");
 			
 			if(manufacturtrId.equals("") || taxId.equals("") || address.equals(""))
 				throw new Exception("All fields are required to be filled!!!");
 			
 			if (confirm.equals("Confirm")) {
-				new ManufacturerService().update(id, new Manufacturer(id,manufacturtrId,taxId,address,city));
+				new ManufacturerService().update(id, new ManufacturerDto(id,manufacturtrId,taxId,address,city));
 
 				request.setAttribute("message", "Manufacturer has succesfully been updated.");
 				request.setAttribute("manufacturers", new ManufacturerService().getAll());

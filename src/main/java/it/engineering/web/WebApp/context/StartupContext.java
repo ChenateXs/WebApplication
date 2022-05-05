@@ -10,19 +10,19 @@ import javax.servlet.annotation.WebListener;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import it.engineering.web.WebApp.config.ApplicationConfiguration;
-import it.engineering.web.WebApp.entity.User;
+import it.engineering.web.WebApp.config.MyAppConfiguration;
+import it.engineering.web.WebApp.entity.UserEntity;
 
 @WebListener("Configuration")
 public class StartupContext implements ServletContextListener{
 
 	@Override
 	public void contextInitialized(ServletContextEvent sce) {
-		List<User> users = new ArrayList<User>();
+		List<UserEntity> users = new ArrayList<UserEntity>();
 
 		sce.getServletContext().setAttribute("logged_in_users", users);
 		
-		ApplicationContext applicationContext = new AnnotationConfigApplicationContext(ApplicationConfiguration.class);
+		ApplicationContext applicationContext = new AnnotationConfigApplicationContext(MyAppConfiguration.class);
     	sce.getServletContext().setAttribute("application-context", applicationContext);
 	}
 

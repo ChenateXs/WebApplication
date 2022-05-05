@@ -5,15 +5,15 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
-import it.engineering.web.WebApp.entity.City;
-import it.engineering.web.WebApp.entity.Manufacturer;
+import it.engineering.web.WebApp.entity.CityEntity;
+import it.engineering.web.WebApp.entity.ManufacturerEntity;
 import it.engineering.web.WebApp.persistence.MyEntitnyManagerFactory;
 import it.engineering.web.WebApp.repository.IcrudRepository;
 
-public class ManufacturerRepository implements IcrudRepository<Manufacturer, Long>{
+public class ManufacturerRepository implements IcrudRepository<ManufacturerEntity, Long>{
 
 	@Override
-	public void create(Manufacturer entity) throws Exception {
+	public void create(ManufacturerEntity entity) throws Exception {
 		EntityManager em = MyEntitnyManagerFactory
 				.getEntityManagerFactory()
 				.createEntityManager();
@@ -28,25 +28,25 @@ public class ManufacturerRepository implements IcrudRepository<Manufacturer, Lon
 	}
 
 	@Override
-	public Manufacturer read(Long id) throws Exception {
+	public ManufacturerEntity read(Long id) throws Exception {
 		EntityManager em = MyEntitnyManagerFactory
 				.getEntityManagerFactory()
 				.createEntityManager();
 		
-		Manufacturer manufacturer = em.find(Manufacturer.class, id);
+		ManufacturerEntity manufacturer = em.find(ManufacturerEntity.class, id);
 		return manufacturer;
 	}
 
 	@Override
-	public void update(Long id, Manufacturer entity) throws Exception {
+	public void update(Long id, ManufacturerEntity entity) throws Exception {
 		EntityManager em = MyEntitnyManagerFactory.getEntityManagerFactory().createEntityManager();
-		Manufacturer existingManufacturer = em.find(Manufacturer.class, id);
+		ManufacturerEntity existingManufacturer = em.find(ManufacturerEntity.class, id);
 		if (existingManufacturer != null) {
 			em.getTransaction().begin();
 			existingManufacturer.setManufactortrId(entity.getManufactortrId());
 			existingManufacturer.setTaxId(entity.getTaxId());
 			existingManufacturer.setAddress(entity.getAddress());
-			existingManufacturer.setCity(em.find(City.class, entity.getCity().getZipCode()));
+			existingManufacturer.setCity(em.find(CityEntity.class, entity.getCity().getZipCode()));
 			em.getTransaction().commit();
 		} else {
 			throw new Exception("Manufacturer with that zip code dosen't exists");
@@ -59,7 +59,7 @@ public class ManufacturerRepository implements IcrudRepository<Manufacturer, Lon
 		EntityManager em = MyEntitnyManagerFactory.getEntityManagerFactory().createEntityManager();
 
 		em.getTransaction().begin();
-		Manufacturer manufacturer = em.find(Manufacturer.class, id);
+		ManufacturerEntity manufacturer = em.find(ManufacturerEntity.class, id);
 		if (manufacturer != null)
 			em.remove(manufacturer);
 		else
@@ -70,12 +70,12 @@ public class ManufacturerRepository implements IcrudRepository<Manufacturer, Lon
 	}
 
 	@Override
-	public List<Manufacturer> getAll() {
+	public List<ManufacturerEntity> getAll() {
 		EntityManager em = MyEntitnyManagerFactory
 				.getEntityManagerFactory()
 				.createEntityManager();
 
-		List<Manufacturer> manufacturers = em.createNamedQuery("Manufacturer.findAll",Manufacturer.class).getResultList();
+		List<ManufacturerEntity> manufacturers = em.createNamedQuery("Manufacturer.findAll",ManufacturerEntity.class).getResultList();
 		em.close();
 		return manufacturers;
 	}

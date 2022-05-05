@@ -1,8 +1,8 @@
-package it.engineering.web.WebApp.domain;
+package it.engineering.web.WebApp.dto;
 
 import java.util.Objects;
 
-public class User {
+public class UserDto {
 	private long id;
 
 	private String username;
@@ -13,12 +13,12 @@ public class User {
 
 	private String lastname;
 
-	public User() {
+	public UserDto() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public User(String username, String password, String firstname, String lastname) {
+	public UserDto(String username, String password, String firstname, String lastname) {
 		super();
 		this.firstname = firstname;
 		this.lastname = lastname;
@@ -26,7 +26,7 @@ public class User {
 		this.username = username;
 	}
 
-	public User(long id, String username, String password, String firstname, String lastname) {
+	public UserDto(long id, String username, String password, String firstname, String lastname) {
 		super();
 		this.id = id;
 		this.firstname = firstname;
@@ -88,7 +88,7 @@ public class User {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		User other = (User) obj;
+		UserDto other = (UserDto) obj;
 		return Objects.equals(username, other.username);
 	}
 
@@ -98,8 +98,8 @@ public class User {
 				+ ", username=" + username + "]";
 	}
 
-	public User clone(){
-		return new User(id,username, null,firstname,lastname);
+	public UserDto clone(){
+		return new UserDto(id,username, null,firstname,lastname);
 	}
 	
 }

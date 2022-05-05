@@ -8,19 +8,19 @@ import javax.servlet.http.HttpSession;
 
 import it.engineering.web.WebApp.action.AbstractAction;
 import it.engineering.web.WebApp.constant.WebConstants;
-import it.engineering.web.WebApp.domain.User;
+import it.engineering.web.WebApp.dto.UserDto;
 
 public class LogoutAction extends AbstractAction{
 
 	@Override
 	public String executeRequest(HttpServletRequest request, HttpServletResponse response) {
 		HttpSession session = request.getSession();
-		String username = ((User)session.getAttribute("login_user")).getUsername();
+		String username = ((UserDto)session.getAttribute("login_user")).getUsername();
 		
 		@SuppressWarnings("unchecked")
-		List<User> loggedInUsers= (List<User>)request.getServletContext().getAttribute("logged_in_users");
+		List<UserDto> loggedInUsers= (List<UserDto>)request.getServletContext().getAttribute("logged_in_users");
 		
-		for(User current: loggedInUsers) {
+		for(UserDto current: loggedInUsers) {
 			if(current.getUsername().equals(username)) {
 				loggedInUsers.remove(current);
 				break;

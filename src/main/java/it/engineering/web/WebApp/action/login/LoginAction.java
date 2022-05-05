@@ -8,15 +8,14 @@ import javax.servlet.http.HttpSession;
 
 import it.engineering.web.WebApp.action.AbstractAction;
 import it.engineering.web.WebApp.constant.WebConstants;
-import it.engineering.web.WebApp.domain.User;
-import it.engineering.web.WebApp.storage.UserSpringStorage;
+import it.engineering.web.WebApp.dto.UserDto;
 import it.engineering.web.WebApp.storage.UserStorage;
 
 public class LoginAction extends AbstractAction{
 
 	@Override
 	public String executeRequest(HttpServletRequest request, HttpServletResponse response) {
-		User user;
+		UserDto user;
 		try {
 			user = login(request);
 			if(user != null) {
@@ -35,7 +34,7 @@ public class LoginAction extends AbstractAction{
 
 	}
 
-	private User login(HttpServletRequest request) throws Exception {
+	private UserDto login(HttpServletRequest request) throws Exception {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 
@@ -43,22 +42,22 @@ public class LoginAction extends AbstractAction{
 			throw new Exception("Username and password need to be felled!!!");
 		}
 		
-		List<User> users = UserSpringStorage.getInstance(request).getUsers(); 
+		List<UserDto> users = UserStorage.getInstance().getUsers(); 
 		@SuppressWarnings("unchecked")
-		List<User> loggedInUsers = (List<User>)request.getServletContext().getAttribute("logged_in_users");
+		List<UserDto> loggedInUsers = (List<UserDto>)request.getServletContext().getAttribute("logged_in_users");
 		
 		
-		for(User current: loggedInUsers) {
+		for(UserDto current: loggedInUsers) {
 			if(current.getUsername().equals(username)) {
 				throw new Exception("User already logged in!!!");
 			}
 		}
 		
-		User user = new User();
+		UserDto user = new UserDto();
 		user.setUsername(username);
 		user.setPassword(password);
 		
-		for(User current: users) {
+		for(UserDto current: users) {
 			if(current.equals(user)) {
 				loggedInUsers.add(current.clone());
 				request.getServletContext().setAttribute("logged_in_users", loggedInUsers);

@@ -4,19 +4,19 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
-import it.engineering.web.WebApp.entity.City;
+import it.engineering.web.WebApp.entity.CityEntity;
 import it.engineering.web.WebApp.persistence.MyEntitnyManagerFactory;
 import it.engineering.web.WebApp.repository.IcrudRepository;
 
-public class CityRepository implements IcrudRepository<City, String> {
+public class CityRepository implements IcrudRepository<CityEntity, String> {
 
 	@Override
-	public void create(City entity) throws Exception {
+	public void create(CityEntity entity) throws Exception {
 		EntityManager em = MyEntitnyManagerFactory.getEntityManagerFactory().createEntityManager();
 
 		em.getTransaction().begin();
 
-		if (em.find(City.class, entity.getZipCode()) == null)
+		if (em.find(CityEntity.class, entity.getZipCode()) == null)
 			em.persist(entity);
 		else
 			throw new Exception("City with that zip code already exists");
@@ -26,16 +26,16 @@ public class CityRepository implements IcrudRepository<City, String> {
 	}
 
 	@Override
-	public City read(String id) throws Exception {
+	public CityEntity read(String id) throws Exception {
 		EntityManager em = MyEntitnyManagerFactory.getEntityManagerFactory().createEntityManager();
 
-		return em.find(City.class, id);
+		return em.find(CityEntity.class, id);
 	}
 
 	@Override
-	public void update(String id, City entity) throws Exception {
+	public void update(String id, CityEntity entity) throws Exception {
 		EntityManager em = MyEntitnyManagerFactory.getEntityManagerFactory().createEntityManager();
-		City existingCity = em.find(City.class, id);
+		CityEntity existingCity = em.find(CityEntity.class, id);
 		if (existingCity != null) {
 			em.getTransaction().begin();
 			existingCity.setZipCode(entity.getZipCode());
@@ -52,7 +52,7 @@ public class CityRepository implements IcrudRepository<City, String> {
 		EntityManager em = MyEntitnyManagerFactory.getEntityManagerFactory().createEntityManager();
 
 		em.getTransaction().begin();
-		City city = em.find(City.class, id);
+		CityEntity city = em.find(CityEntity.class, id);
 		if (city != null)
 			em.remove(city);
 		else
@@ -63,10 +63,10 @@ public class CityRepository implements IcrudRepository<City, String> {
 	}
 
 	@Override
-	public List<City> getAll() {
+	public List<CityEntity> getAll() {
 		EntityManager em = MyEntitnyManagerFactory.getEntityManagerFactory().createEntityManager();
 
-		List<City> cities = em.createNamedQuery("City.findAll", City.class).getResultList();
+		List<CityEntity> cities = em.createNamedQuery("City.findAll", CityEntity.class).getResultList();
 		em.close();
 		return cities;
 	}

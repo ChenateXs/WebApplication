@@ -1,15 +1,15 @@
-package it.engineering.web.WebApp.domain;
+package it.engineering.web.WebApp.dto;
 
 import java.util.Objects;
 
-public class City {
+public class CityDto {
 	private String zipCode;
 	private String name;
-	public City() {
+	public CityDto() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public City(String zipCode, String name) {
+	public CityDto(String zipCode, String name) {
 		super();
 		this.zipCode = zipCode;
 		this.name = name;
@@ -39,7 +39,7 @@ public class City {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		City other = (City) obj;
+		CityDto other = (CityDto) obj;
 		return Objects.equals(zipCode, other.zipCode);
 	}
 	@Override

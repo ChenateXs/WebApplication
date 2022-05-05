@@ -3,13 +3,12 @@ package it.engineering.web.WebApp.storage;
 import java.util.ArrayList;
 import java.util.List;
 
-import it.engineering.web.WebApp.domain.User;
+import it.engineering.web.WebApp.dto.UserDto;
 import it.engineering.web.WebApp.service.IcrudService;
 import it.engineering.web.WebApp.service.impl.UserService;
-import it.engineering.web.WebApp.service.impl.spring.UserSpringService;
 
 public class UserStorage{
-	private List<User> users;
+	private List<UserDto> users;
 	private static UserStorage instance;
 	private IcrudService icrudService;
 	
@@ -24,11 +23,11 @@ public class UserStorage{
 		return instance;
 	}
 	
-	public void add(User user) {
+	public void add(UserDto user) {
 		users.add(user);
 	}
 	
-	public List<User> getUsers() {
+	public List<UserDto> getUsers() {
 		return users;
 	}
 }

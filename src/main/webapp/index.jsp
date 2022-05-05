@@ -14,7 +14,7 @@
 <body style="background-image: url('https://images.hdqwalls.com/download/dark-abstract-black-minimal-4k-q0-1920x1080.jpg');">
 
     <div class="position-absolute top-50 start-50 translate-middle border border-white rounded-3 text-white bg-dark w-25 h-25">
-    <c:url value="/application/login" var="urllogin"></c:url>
+    <c:url value="login" var="urllogin"></c:url>
 	<form action="${urllogin}" method="post">
         <div class="d-flex justify-content-center m-5" style="text-align: center;">
             <table>

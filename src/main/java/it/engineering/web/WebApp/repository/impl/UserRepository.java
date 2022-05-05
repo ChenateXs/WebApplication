@@ -3,26 +3,26 @@ package it.engineering.web.WebApp.repository.impl;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import it.engineering.web.WebApp.entity.User;
+import it.engineering.web.WebApp.entity.UserEntity;
 import it.engineering.web.WebApp.persistence.MyEntitnyManagerFactory;
 import it.engineering.web.WebApp.repository.IcrudRepository;
 
-public class UserRepository implements IcrudRepository<User, Long>{
+public class UserRepository implements IcrudRepository<UserEntity, Long>{
 
 	@Override
-	public void create(User entity) throws Exception {
+	public void create(UserEntity entity) throws Exception {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public User read(Long id) throws Exception {
+	public UserEntity read(Long id) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void update(Long id, User entity) throws Exception {
+	public void update(Long id, UserEntity entity) throws Exception {
 		// TODO Auto-generated method stub
 		
 	}
@@ -34,12 +34,12 @@ public class UserRepository implements IcrudRepository<User, Long>{
 	}
 	
 	@Override
-	public List<User> getAll(){
+	public List<UserEntity> getAll(){
 		EntityManager em = MyEntitnyManagerFactory
 				.getEntityManagerFactory()
 				.createEntityManager();
 
-		List<User> users = em.createNamedQuery("User.findAll",User.class).getResultList();
+		List<UserEntity> users = em.createNamedQuery("User.findAll",UserEntity.class).getResultList();
 		em.close();
 		return users;
 	}

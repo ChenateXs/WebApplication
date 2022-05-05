@@ -3,11 +3,11 @@ package it.engineering.web.WebApp.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-import it.engineering.web.WebApp.domain.City;
+import it.engineering.web.WebApp.dto.CityDto;
 import it.engineering.web.WebApp.repository.impl.CityRepository;
 import it.engineering.web.WebApp.service.IcrudService;
 
-public class CityService implements IcrudService<City, String>{
+public class CityService implements IcrudService<CityDto, String>{
 	CityRepository cityRepository;
 	
 	public CityService() {
@@ -15,21 +15,21 @@ public class CityService implements IcrudService<City, String>{
 	}
 	
 	@Override
-	public void create(City entity) throws Exception {
-		it.engineering.web.WebApp.entity.City cityE = new it.engineering.web.WebApp.entity.City(entity.getZipCode(), entity.getName());
+	public void create(CityDto entity) throws Exception {
+		it.engineering.web.WebApp.entity.CityEntity cityE = new it.engineering.web.WebApp.entity.CityEntity(entity.getZipCode(), entity.getName());
 		cityRepository.create(cityE);
 		
 	}
 
 	@Override
-	public City read(String id) throws Exception {
-		it.engineering.web.WebApp.entity.City cityE = cityRepository.read(id);
-		return new City(cityE.getZipCode(),cityE.getName());
+	public CityDto read(String id) throws Exception {
+		it.engineering.web.WebApp.entity.CityEntity cityE = cityRepository.read(id);
+		return new CityDto(cityE.getZipCode(),cityE.getName());
 	}
 
 	@Override
-	public void update(String id, City entity) throws Exception {
-		it.engineering.web.WebApp.entity.City city = new it.engineering.web.WebApp.entity.City(entity.getZipCode(),entity.getName());
+	public void update(String id, CityDto entity) throws Exception {
+		it.engineering.web.WebApp.entity.CityEntity city = new it.engineering.web.WebApp.entity.CityEntity(entity.getZipCode(),entity.getName());
 		
 		cityRepository.update(id,city);
 	}
@@ -40,11 +40,11 @@ public class CityService implements IcrudService<City, String>{
 	}
 
 	@Override
-	public List<City> getAll() {
-		List<it.engineering.web.WebApp.entity.City> cityEntities= cityRepository.getAll();
-		List<City> cities = new ArrayList<City>();
-		for(it.engineering.web.WebApp.entity.City cityE:cityEntities) {
-			cities.add(new City(cityE.getZipCode(),cityE.getName()));
+	public List<CityDto> getAll() {
+		List<it.engineering.web.WebApp.entity.CityEntity> cityEntities= cityRepository.getAll();
+		List<CityDto> cities = new ArrayList<CityDto>();
+		for(it.engineering.web.WebApp.entity.CityEntity cityE:cityEntities) {
+			cities.add(new CityDto(cityE.getZipCode(),cityE.getName()));
 		}
 		return cities;
 	}
